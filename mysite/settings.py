@@ -17,8 +17,12 @@ from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
 
+#####
+
 from rich.traceback import install
 install()
+
+#####
 
 LOGGING = {
     'version': 1,
@@ -171,9 +175,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# TODO: Configure Database (Template is for MySql)
+
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
+        'ENGINE': 'django.db.backends.mysql',
         'HOST': _require_env('DB_HOST'),
         'USER': _require_env('DB_USER'),
         'PASSWORD': _require_env('DB_PASSWORD'),
@@ -202,11 +208,14 @@ ADMINS = [
     # ("Webmaster", "webmaster@example.com")
 ]
 MANAGERS = [
-    # ("Service", "email@example.com")
+    # ("Service", "service@example.com")
 ]
 
-LOGIN_URL = "/admin/login"
+LOGIN_URL = reverse_lazy("admin:login")
 
+# KMUHelper Config
+
+KMUHELPER_DOMAIN = ""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
