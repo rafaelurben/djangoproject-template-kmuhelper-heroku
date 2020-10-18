@@ -1,8 +1,8 @@
-# Django KMUHelper Template Project
+# Django Template Project for KMUHelper on Heroku
 
-This is a Django template project that helps to be able to directly start using the KMUHelper.
+Dies ist ein Django Vorlagenprojekt, welches dabei hilft, direkt mit dem KMUHelper loszulegen. 
 
-Dies ist ein Django Vorlagenprjekt, welches dabei hilft, direkt mit dem KMUHelper loszulegen.
+Diese Vorlage ist für [Heroku](https://heroku.com) ausgelegt. Andere Anbieter benötigen unter Umständen andere Konfigurationen!
 
 ## Schritte
 
