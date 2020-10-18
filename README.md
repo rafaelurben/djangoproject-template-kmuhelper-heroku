@@ -4,6 +4,6 @@ Dies ist ein Django Vorlagenprojekt, welches dabei hilft, direkt mit dem KMUHelp
 
 Diese Vorlage ist für [Heroku](https://heroku.com) ausgelegt. Andere Anbieter benötigen unter Umständen andere Konfigurationen!
 
-## Schritte
+## Installation
 
-Diese Seite ist noch **in Arbeit!**
+Siehe [hier](https://rafaelurben.github.io/django-kmuhelper/installation).
