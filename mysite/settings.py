@@ -36,17 +36,18 @@ LOGGING = {
             'format': '%(levelname)s %(message)s'
         },
         "rich": {
-            "datefmt": "[%X]"
+            "datefmt": "[%x %X]"
         },
     },
     'handlers': {
         'console': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'rich.logging.RichHandler',
-            'formatter': 'rich'
+            'formatter': 'rich',
+            'rich_tracebacks': True,
         },
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': 'logs.log',
             'formatter': 'verbose'
@@ -261,4 +262,4 @@ STATICFILES_DIRS = [
 ]
 
 # Configure Django App for Heroku.
-django_heroku.settings(locals())
+django_heroku.settings(locals(), logging=False)
