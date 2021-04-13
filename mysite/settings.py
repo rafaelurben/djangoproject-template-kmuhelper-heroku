@@ -10,12 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import django_heroku
 import os
 import logging
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
+
+import django_heroku
 
 #####
 
@@ -108,6 +109,7 @@ else:
 
 INSTALLED_APPS = [
     'kmuhelper'
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -217,7 +219,9 @@ LOGIN_URL = reverse_lazy("admin:login")
 
 # KMUHelper Config
 
-KMUHELPER_DOMAIN = ""
+## Used for 'view online' URLs in E-Mails
+#KMUHELPER_DOMAIN = ""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -241,14 +245,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'de-CH'
+TIME_ZONE = 'Europe/Zurich'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -259,8 +260,13 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage '
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "mysite", "static"),
+    BASE_DIR / 'mysite' / 'static'
 ]
+
+
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals(), logging=False)
