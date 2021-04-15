@@ -116,6 +116,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'multi-email-fields'
 ]
 
 MIDDLEWARE = [
@@ -159,7 +161,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'mysite' / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -220,8 +224,19 @@ LOGIN_URL = reverse_lazy("admin:login")
 # KMUHelper Config
 
 ## Used for 'view online' URLs in E-Mails
-#KMUHELPER_DOMAIN = ""
+#KMUHELPER_DOMAIN = "https://example.com"
 
+## Add this address as BCC to every outgoing email
+#KMUHELPER_LOG_EMAIL = "log@example.com"
+
+## Add this default context to every email
+#KMUHELPER_EMAILS_DEFAULT_CONTEXT = {
+#    "firstcontent": "",
+#    "lastcontent": """-------\n\nHinweis: Diese E-Mail wurde automatisiert versendet!""",
+#    "header_background": "#AA1155",
+#    "header_foreground": "#FFEE88",
+#    "title": "KMUHelper | E-Mails",
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
