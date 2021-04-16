@@ -183,21 +183,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# TODO: Configure Database (Template is for MySql)
+# TODO: Configure Database (Uncomment one of these 2 or use your own)
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': _require_env('DB_HOST'),
-        'USER': _require_env('DB_USER'),
-        'PASSWORD': _require_env('DB_PASSWORD'),
-        'NAME': _require_env('DB_NAME'),
-        'PORT': os.getenv('DB_PORT', 3306),
-        "OPTIONS": {
-            "charset": "utf8mb4",
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        },
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': 'mydatabase',
+    # },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'HOST': _require_env('DB_HOST'),
+    #     'USER': _require_env('DB_USER'),
+    #     'PASSWORD': _require_env('DB_PASSWORD'),
+    #     'NAME': _require_env('DB_NAME'),
+    #     'PORT': os.getenv('DB_PORT', 3306),
+    #     "OPTIONS": {
+    #         "charset": "utf8mb4",
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+    #     },
+    # }
 }
 
 # TODO: Configure E-Mail
