@@ -235,11 +235,11 @@ LOGIN_URL = reverse_lazy("admin:login")
 
 ## Add this default context to every email
 #KMUHELPER_EMAILS_DEFAULT_CONTEXT = {
-#    "firstcontent": "",
-#    "lastcontent": """-------\n\nHinweis: Diese E-Mail wurde automatisiert versendet!""",
+#    "precontent": "",
+#    "postcontent": """freundliche Grüsse\n\nIhre Firma""",
 #    "header_background": "#AA1155",
 #    "header_foreground": "#FFEE88",
-#    "title": "KMUHelper | E-Mails",
+#    "header_title": "KMUHelper | E-Mails",
 #}
 
 # Password validation
