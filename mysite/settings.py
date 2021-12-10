@@ -97,9 +97,7 @@ if os.environ.get('DJANGO_DEBUG', False):
 else:
     DEBUG = False
     SECRET_KEY = _require_env('SECRET_KEY')
-    ALLOWED_HOSTS = [
-        # TODO: Add your domain(s) to this list!
-    ]
+    ALLOWED_HOSTS = ['*']
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
     print("DEBUG IS OFF!")
@@ -117,7 +115,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'multi-email-fields'
+    'multi_email_field',
 ]
 
 MIDDLEWARE = [
