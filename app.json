@@ -1,0 +1,24 @@
+{
+    "name": "KMUHelper example setup for Heroku",
+    "description": "Example setup for the Swiss 'KMUHelper' software on Heroku.",
+    "website": "https://rafaelurben.github.io/kmuhelper/",
+    "repository": "https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku",
+    "keywords": [
+        "KMU",
+        "SME",
+        "qr-invoice",
+        "switzerland",
+        "swiss",
+        "python",
+        "django"
+    ],
+    "env": {
+        "SECRET_KEY": {
+            "description": "The secret key for the Django application.",
+            "generator": "secret"
+        }
+    },
+    "addons": [
+        "heroku-postgresql"
+    ]
+}

@@ -15,8 +15,7 @@ import logging
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
-
-import django_heroku
+import dj_database_url
 
 #####
 
@@ -88,19 +87,23 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if os.environ.get('DJANGO_DEBUG', False):
+    # Development settings
+    print("DEBUG IS ON! (Development mode)")
+
     DEBUG = True
     SECRET_KEY = '2_86tnhr%jt4=on%gks(f7k^s_)wm938khqjmrnsljzvt^_=jf'
     ALLOWED_HOSTS = ["localhost", "127.0.0.1", "ngrok.io"]
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
     SECURE_SSL_REDIRECT = False
-    print("DEBUG IS ON!")
 else:
+    # Production settings
+    print("DEBUG IS OFF! (Production mode)")
+
     DEBUG = False
     SECRET_KEY = _require_env('SECRET_KEY')
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['*'] # Heroku will take care of validating the host
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
-    print("DEBUG IS OFF!")
 
 
 # Application definition
@@ -179,30 +182,47 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# TODO: Configure Database (Uncomment one of these 2 or use your own)
+# TODO: Configure Database
 
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': 'mydatabase',
-    # },
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'HOST': _require_env('DB_HOST'),
-    #     'USER': _require_env('DB_USER'),
-    #     'PASSWORD': _require_env('DB_PASSWORD'),
-    #     'NAME': _require_env('DB_NAME'),
-    #     'PORT': os.getenv('DB_PORT', 3306),
-    #     "OPTIONS": {
-    #         "charset": "utf8mb4",
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-    #     },
-    # }
-}
+MAX_CONN_AGE = 600
+
+DATABASES = {}
+
+if "DATABASE_URL" in os.environ:
+    # A DATABASE_URL environment variable is set
+    # This means that so we are probably on Heroku
+
+    DATABASES["default"] = dj_database_url.config(
+        conn_max_age=MAX_CONN_AGE, ssl_require=True)
+
+elif DEBUG:
+    # Development mode is on
+    # Use SQLite3 for development
+
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+
+else:
+    # Custom (MySQL) database
+
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': _require_env('DB_HOST'),
+        'USER': _require_env('DB_USER'),
+        'PASSWORD': _require_env('DB_PASSWORD'),
+        'NAME': _require_env('DB_NAME'),
+        'PORT': os.getenv('DB_PORT', 3306),
+        "OPTIONS": {
+            "charset": "utf8mb4",
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
+    }
 
 # TODO: Configure E-Mail
 
-EMAIL_HOST = os.getenv("EMAIL_HOST", "asmtp.mail.hostpoint.ch")
+EMAIL_HOST = os.getenv("EMAIL_HOST")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", 465))
@@ -221,7 +241,7 @@ MANAGERS = [
 
 LOGIN_URL = reverse_lazy("admin:login")
 
-# KMUHelper Config
+# TODO: KMUHelper Config
 
 ## Used for 'view online' URLs in E-Mails
 #KMUHELPER_DOMAIN = "https://example.com"
@@ -271,8 +291,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage '
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'mysite' / 'static'
@@ -282,6 +304,3 @@ STATICFILES_DIRS = [
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
-
-# Configure Django App for Heroku.
-django_heroku.settings(locals(), logging=False)
