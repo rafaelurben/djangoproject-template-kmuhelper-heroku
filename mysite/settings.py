@@ -109,7 +109,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
-    'kmuhelper'
+    'kmuhelper',
 
     'django.contrib.admin',
     'django.contrib.auth',
