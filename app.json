@@ -1,6 +1,6 @@
 {
-    "name": "KMUHelper example setup for Heroku",
-    "description": "Example setup for the Swiss 'KMUHelper' software on Heroku.",
+    "name": "KMUHelper app on Heroku",
+    "description": "Use the 'KMUHelper' in the simplest way possible.",
     "website": "https://rafaelurben.github.io/kmuhelper/",
     "repository": "https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku",
     "keywords": [
@@ -16,9 +16,49 @@
         "SECRET_KEY": {
             "description": "The secret key for the Django application.",
             "generator": "secret"
+        },
+        "DB_ENGINE": {
+            "description": "The database engine.",
+            "value": "django.db.backends.mysql",
+            "required": false
+        },
+        "DB_HOST": {
+            "description": "The host of the database.",
+            "required": false
+        },
+        "DB_USER": {
+            "description": "The user of the database.",
+            "required": false
+        },
+        "DB_PASSWORD": {
+            "description": "The password of the database.",
+            "required": false
+        },
+        "DB_NAME": {
+            "description": "The name of the database.",
+            "required": false
+        },
+        "DB_PORT": {
+            "description": "The port of the database.",
+            "value": "3306",
+            "required": false
+        },
+        "EMAIL_HOST": {
+            "description": "The host of the email server.",
+            "required": false
+        },
+        "EMAIL_HOST_USER": {
+            "description": "The user of the email server.",
+            "required": false
+        },
+        "EMAIL_HOST_PASSWORD": {
+            "description": "The password of the email server.",
+            "required": false
+        },
+        "EMAIL_PORT": {
+            "description": "The port of the email server.",
+            "value": "465",
+            "required": false
         }
-    },
-    "addons": [
-        "heroku-postgresql"
-    ]
+    }
 }

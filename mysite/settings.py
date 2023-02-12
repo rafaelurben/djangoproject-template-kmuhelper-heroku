@@ -208,7 +208,7 @@ else:
     # Custom (MySQL) database
 
     DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
         'HOST': _require_env('DB_HOST'),
         'USER': _require_env('DB_USER'),
         'PASSWORD': _require_env('DB_PASSWORD'),
