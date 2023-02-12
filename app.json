@@ -59,6 +59,21 @@
             "description": "The port of the email server.",
             "value": "465",
             "required": false
+        },
+        "DJANGO_SUPERUSER_USERNAME": {
+            "description": "The username of the superuser. (Recommended if you want to create a superuser.)",
+            "required": false
+        },
+        "DJANGO_SUPERUSER_PASSWORD": {
+            "description": "The password of the superuser. (Recommended if you want to create a superuser.)",
+            "required": false
+        },
+        "DJANGO_SUPERUSER_EMAIL": {
+            "description": "The email of the superuser. (Recommended if you want to create a superuser.)",
+            "required": false
         }
+    },
+    "scripts": {
+        "postdeploy": "python manage.py migrate --noinput && python manage.py collectstatic --noinput && python manage.py createsuperuser --noinput"
     }
 }

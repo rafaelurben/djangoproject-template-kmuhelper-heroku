@@ -14,4 +14,4 @@ Using custom database:
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku)
 
 Using Heroku Postgres: (ignore DB-related fields in the form)
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku&addons=[heroku-postgresql])
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku&addons=[heroku-postgresql]&env[DJANGO_SUPERUSER_USERNAME]=REPLACE_WITH_YOUR_USERNAME&env[DJANGO_SUPERUSER_PASSWORD]=REPLACE_WITH_YOUR_PASSWORD&env[DJANGO_SUPERUSER_EMAIL]=REPLACE_WITH_YOUR_EMAIL)
