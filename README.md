@@ -10,4 +10,10 @@ Siehe [hier](https://rafaelurben.github.io/django-kmuhelper/installation).
 
 ## Deploy on Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku)
+With Heroku postgres database:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku/tree/master)
+
+With custom database:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku/tree/owndb)
