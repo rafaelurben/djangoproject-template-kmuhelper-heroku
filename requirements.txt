@@ -1,4 +1,4 @@
-django==4.2.3
+django==4.2.7
 
 mysqlclient==2.1.1
 whitenoise==6.3.0
