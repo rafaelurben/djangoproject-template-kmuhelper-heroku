@@ -146,7 +146,6 @@ if DEBUG:
         'debug_toolbar.panels.templates.TemplatesPanel',
         'debug_toolbar.panels.cache.CachePanel',
         # 'debug_toolbar.panels.signals.SignalsPanel',
-        'debug_toolbar.panels.logging.LoggingPanel',
         'debug_toolbar.panels.redirects.RedirectsPanel',
         # 'debug_toolbar.panels.profiling.ProfilingPanel',
     ]
@@ -294,14 +293,17 @@ USE_TZ = True
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 STATICFILES_DIRS = [
     BASE_DIR / 'mysite' / 'static'
 ]
 
-
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
