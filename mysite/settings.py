@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 import logging
+import sys
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
@@ -20,6 +21,7 @@ import dj_database_url
 #####
 
 from rich.traceback import install
+
 install()
 
 #####
@@ -67,6 +69,11 @@ LOGGING = {
     }
 }
 
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', False))
+print("DEBUG IS", DEBUG)
+TESTING = 'test' in sys.argv or os.getenv('TESTING', False)
+print("TESTING IS", DEBUG)
+
 
 def _require_env(name):
     value = os.getenv(name)
@@ -79,32 +86,26 @@ def _require_env(name):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
 
-if os.environ.get('DJANGO_DEBUG', False):
-    # Development settings
-    print("DEBUG IS ON! (Development mode)")
+if DEBUG or TESTING:
+    # Development/Testing settings
 
-    DEBUG = True
     SECRET_KEY = '2_86tnhr%jt4=on%gks(f7k^s_)wm938khqjmrnsljzvt^_=jf'
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", "ngrok.io"]
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
     SECURE_SSL_REDIRECT = False
 else:
     # Production settings
-    print("DEBUG IS OFF! (Production mode)")
 
-    DEBUG = False
     SECRET_KEY = _require_env('SECRET_KEY')
-    ALLOWED_HOSTS = ['*'] # Heroku will take care of validating the host
+    ALLOWED_HOSTS = ['*']  # Heroku will take care of validating the host
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
-
 
 # Application definition
 
@@ -195,7 +196,7 @@ if "DATABASE_URL" in os.environ:
     DATABASES["default"] = dj_database_url.config(
         conn_max_age=MAX_CONN_AGE, ssl_require=True)
 
-elif DEBUG:
+elif DEBUG or TESTING:
     # Development mode is on
     # Use SQLite3 for development
 
@@ -276,7 +277,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -286,7 +286,6 @@ TIME_ZONE = 'Europe/Zurich'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
