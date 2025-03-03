@@ -12,7 +12,7 @@ Siehe [hier](https://rafaelurben.github.io/django-kmuhelper/installation).
 
 With Heroku postgres database:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https%3A%2F%2Fgithub.com%2Frafaelurben%2Fdjangoproject-template-kmuhelper-heroku%2Ftree%2Fmaster)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https%3A%2F%2Fgithub.com%2Frafaelurben%2Fdjangoproject-template-kmuhelper-heroku%2Ftree%2Fmain)
 
 With custom database:
 
