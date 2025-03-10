@@ -9,4 +9,4 @@ requests==2.32.3
 rich==13.9.4
 django-debug-toolbar==5.0.1
 
-django-kmuhelper==1.8.3
+django-kmuhelper==1.8.4
