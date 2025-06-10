@@ -4,7 +4,7 @@ mysqlclient==2.2.7
 whitenoise==6.9.0
 dj_database_url==2.3.0
 gunicorn==23.0.0
-requests==2.32.3
+requests==2.32.4
 
 rich==14.0.0
 django-debug-toolbar==5.2.0
