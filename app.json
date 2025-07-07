@@ -1,8 +1,8 @@
 {
     "name": "KMUHelper app on Heroku",
-    "description": "Use the 'KMUHelper' in the simplest way possible.",
+    "description": "Use the 'KMUHelper' with an own database.",
     "website": "https://rafaelurben.github.io/kmuhelper/",
-    "repository": "https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku",
+    "repository": "https://github.com/rafaelurben/djangoproject-template-kmuhelper-heroku/tree/owndb",
     "logo": "https://raw.githubusercontent.com/rafaelurben/django-kmuhelper/master/kmuhelper/static/kmuhelper/images/icons/icon-512x512.png",
     "keywords": [
         "KMU",
@@ -13,7 +13,7 @@
         "python",
         "django"
     ],
-    "addons": ["heroku-postgresql"],
+    "addons": [],
     "env": {
         "SECRET_KEY": {
             "description": "The secret key for the Django application.",
@@ -47,6 +47,10 @@
         "DJANGO_SUPERUSER_EMAIL": {
             "description": "The email of the superuser. (Recommended if you want to create a superuser.)",
             "required": false
+        },
+        "DATABASE_URL": {
+            "description": "The database URL of an existing database, including scheme, user, password, domain, port and database. See https://github.com/jazzband/dj-database-url?tab=readme-ov-file#url-schema for more information.",
+            "required": true
         }
     },
     "scripts": {
