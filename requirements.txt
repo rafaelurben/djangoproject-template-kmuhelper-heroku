@@ -6,7 +6,7 @@ dj_database_url==3.0.1
 
 whitenoise==6.9.0
 gunicorn==23.0.0
-requests==2.32.4
+requests==2.32.5
 
 rich==14.1.0
 django-debug-toolbar==6.0.0
