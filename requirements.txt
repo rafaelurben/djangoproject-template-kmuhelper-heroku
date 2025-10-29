@@ -1,7 +1,7 @@
 django==5.2.7
 
 mysqlclient==2.2.7
-psycopg[binary,pool]==3.2.11
+psycopg[binary,pool]==3.2.12
 dj_database_url==3.0.1
 
 whitenoise==6.11.0
