@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os-version }}
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - if: matrix.os-version == 'ubuntu-latest'
       name: Set TESTING environment variable (ubuntu)
       run: echo "TESTING=True" >> $GITHUB_ENV
