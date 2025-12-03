@@ -223,10 +223,10 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Format "NAME <E-Mail>" or "E-Mail"
 SERVER_EMAIL = EMAIL_HOST_USER  # Format "NAME <E-Mail>" or "E-Mail"
 
 ADMINS = [
-    # ("Webmaster <webmaster@example.com>")
+    # "Webmaster <webmaster@example.com>"
 ]
 MANAGERS = [
-    # ("Service <service@example.com>")
+    # "Service <service@example.com>"
 ]
 
 LOGIN_URL = reverse_lazy("admin:login")
