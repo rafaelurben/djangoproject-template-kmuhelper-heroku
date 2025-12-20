@@ -1,6 +1,25 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+    "config:best-practices",
+    ":automergeStableNonMajor",
+    ":automergeRequireAllStatusChecks",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
+  "minimumReleaseAge": "3 days",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "description": ["Don't automerge Python, Django and django-kmuhelper major and minor updates"],
+      "matchPackageNames": ["django", "python", "django-kmuhelper"],
+      "matchUpdateTypes": ["major", "minor"],
+      "automerge": false
+    }
+  ],
+  "labels": ["dependencies", "dependencies/renovate"],
+  "dependencyDashboardLabels": ["dependencies", "dependencies/renovate"],
+  "dependencyDashboardOSVVulnerabilitySummary": "all"
 }
