@@ -1,6 +1,6 @@
 django==6.0.2
 
-mysqlclient==2.2.7
+mysqlclient==2.2.8
 psycopg[binary,pool]==3.3.2
 dj_database_url==3.1.0
 
