@@ -30,11 +30,17 @@ jobs:
       with:
         cache: 'pip' # caching pip dependencies
         python-version-file: '.python-version'
+    - name: Install uv
+      uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+      with:
+        # Install a specific version of uv.
+        version: "0.11.14"
+        enable-cache: true
     - name: Install Python Dependencies
-      run: pip install -r requirements.txt
+      run: uv sync --locked --all-extras
     - name: Run Django system check
-      run: python manage.py check
+      run: uv run --locked python manage.py check
     - name: Collect static files
-      run: python manage.py collectstatic --noinput
+      run: uv run --locked python manage.py collectstatic --noinput
     - name: Run KMUHelper Tests
-      run: python manage.py test kmuhelper_tests
+      run: uv run --locked python manage.py test kmuhelper_tests
