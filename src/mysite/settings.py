@@ -83,8 +83,9 @@ def _require_env(name):
     return value
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+# Build paths inside the project like this: SRC_DIR / 'subdir'.
+SRC_DIR = Path(__file__).resolve(strict=True).parent.parent
+PROJECT_ROOT = SRC_DIR.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -151,7 +152,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'mysite' / 'templates',
+            SRC_DIR / 'mysite' / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -191,7 +192,7 @@ elif DEBUG or TESTING:
 
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': PROJECT_ROOT / 'db.sqlite3',
     }
 
 else:
@@ -279,10 +280,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = PROJECT_ROOT / 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'mysite' / 'static'
+    SRC_DIR / 'mysite' / 'static'
 ]
 
 STORAGES = {
@@ -294,4 +295,4 @@ STORAGES = {
     },
 }
 
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+MEDIA_ROOT = PROJECT_ROOT / 'mediafiles'
