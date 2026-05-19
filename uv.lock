@@ -111,7 +111,7 @@ wheels = [
 
 [[package]]
 name = "django-kmuhelper"
-version = "1.8.7"
+version = "1.8.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "defusedxml" },
@@ -122,9 +122,9 @@ dependencies = [
     { name = "rich" },
     { name = "woocommerce" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/22/94/c117a1de369aacaa85605ed104c865ac0df41b881c504546def719535f6a/django_kmuhelper-1.8.7.tar.gz", hash = "sha256:dddc6606e09b3b3b9c5c38dcf447a4783ccf4e0cdadd95647d23cbb8fe451a55", size = 195308, upload-time = "2025-12-03T19:23:29.855Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/08/41/e475fc22880d1bb16da8180245c5b00324b7fa9ba2c29b61f01bfe741d63/django_kmuhelper-1.8.8.tar.gz", hash = "sha256:936053a23bded286dd643a18c0f3767442496911829940a00d19c44692df8c6b", size = 196224, upload-time = "2026-05-16T00:54:49.465Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6f/75/e5d4598ccb143c4e1378104bd48f8d4281fb0acede047408aea512d0ad0d/django_kmuhelper-1.8.7-py3-none-any.whl", hash = "sha256:d3c21b06ab6819947e321d1ce6ba33949dea36b9e6de938be9eb7afa908c16c2", size = 271854, upload-time = "2025-12-03T19:23:28.587Z" },
+    { url = "https://files.pythonhosted.org/packages/66/a3/7e78d84ce8b7ab7f166aa9d2682bd9238e95124f54224950f33dbc794f66/django_kmuhelper-1.8.8-py3-none-any.whl", hash = "sha256:adb7040f401a798ef32c7a28119ad9db14e8d4b1697aff2335b1fd353f1ffffb", size = 272802, upload-time = "2026-05-16T00:54:47.53Z" },
 ]
 
 [[package]]
@@ -149,7 +149,7 @@ requires-dist = [
     { name = "dj-database-url", specifier = "==3.1.2" },
     { name = "django", specifier = "==6.0.5" },
     { name = "django-debug-toolbar", specifier = "==6.3.0" },
-    { name = "django-kmuhelper", specifier = "==1.8.7" },
+    { name = "django-kmuhelper", specifier = "==1.8.8" },
     { name = "gunicorn", specifier = "==26.0.0" },
     { name = "mysqlclient", specifier = "==2.2.8" },
     { name = "psycopg", extras = ["binary", "pool"], specifier = "==3.3.4" },
