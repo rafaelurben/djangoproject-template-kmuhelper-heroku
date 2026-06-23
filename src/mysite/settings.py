@@ -11,18 +11,23 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-import logging
 import sys
 from pathlib import Path
+
+import dj_database_url
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
-import dj_database_url
-
-#####
-
+from reportlab import rl_config
 from rich.traceback import install
 
+##### Rich
+
 install()
+
+##### Reportlab
+
+# TODO: limit hosts for image fetching in pdf generation
+rl_config.trustedHosts = ["*"]
 
 #####
 
