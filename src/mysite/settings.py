@@ -72,7 +72,7 @@ LOGGING = {
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', False))
 print("DEBUG IS", DEBUG)
 TESTING = 'test' in sys.argv or os.getenv('TESTING', False)
-print("TESTING IS", DEBUG)
+print("TESTING IS", TESTING)
 
 
 def _require_env(name):
@@ -136,6 +136,8 @@ MIDDLEWARE = [
 if DEBUG:
     INSTALLED_APPS.append('debug_toolbar')
     MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+
+    INTERNAL_IPS = ['127.0.0.1', 'localhost']
 
     # Debug Toolbar settings
     # https://django-debug-toolbar.readthedocs.io/en/latest/configuration.html
