@@ -17,3 +17,12 @@ With Heroku postgres database:
 With custom database:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https%3A%2F%2Fgithub.com%2Frafaelurben%2Fdjangoproject-template-kmuhelper-heroku%2Ftree%2Fowndb)
+
+## Local Dev
+
+```bash
+export DJANGO_DEBUG=true
+uv run python manage.py migrate
+uv run python manage.py createsuperuser
+uv run python manage.py runserver
+```
