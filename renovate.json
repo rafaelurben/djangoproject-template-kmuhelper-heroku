@@ -13,10 +13,33 @@
   },
   "packageRules": [
     {
-      "description": ["Don't automerge Python, Django and django-kmuhelper major and minor updates"],
-      "matchPackageNames": ["django", "python", "django-kmuhelper"],
+      "description": ["Don't automerge Python and Django major and minor updates"],
+      "matchPackageNames": ["django", "python"],
       "matchUpdateTypes": ["major", "minor"],
-      "automerge": false
+      "automerge": false,
+    },
+    {
+      "description": ["Automerge uv patch versions"],
+      "groupName": "all non-breaking dependencies",
+      "groupSlug": "all-non-breaking",
+      "matchPackageNames": "astral-sh/uv",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Group all non-breaking dependencies except python and django",
+      "groupName": "all non-breaking dependencies",
+      "groupSlug": "all-non-breaking",
+      "matchJsonata": ["isBreaking = false"],
+      "matchPackageNames": [
+        "*",
+        "!python",
+        "!django"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
     }
   ],
   "labels": ["dependencies", "dependencies/renovate"],
