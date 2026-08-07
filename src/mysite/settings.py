@@ -220,15 +220,23 @@ else:
 
 # TODO: Configure E-Mail
 
-EMAIL_HOST = os.getenv("EMAIL_HOST")
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = int(os.getenv("EMAIL_PORT", 465))
-EMAIL_USE_SSL = True
+MAILERS = {
+    "default": {
+        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
+        "OPTIONS": {
+            "host": os.getenv("EMAIL_HOST"),
+            "use_ssl": True,
+            "port": int(os.getenv("EMAIL_PORT", 465)),
+            "username": os.getenv("EMAIL_HOST_USER"),
+            "password": os.getenv("EMAIL_HOST_PASSWORD"),
+        },
+    },
+}
+
 EMAIL_SUBJECT_PREFIX = ""
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Format "NAME <E-Mail>" or "E-Mail"
-SERVER_EMAIL = EMAIL_HOST_USER  # Format "NAME <E-Mail>" or "E-Mail"
+DEFAULT_FROM_EMAIL = os.getenv("EMAIL_HOST_USER")  # Format "NAME <E-Mail>" or "E-Mail"
+SERVER_EMAIL = os.getenv("EMAIL_HOST_USER")  # Format "NAME <E-Mail>" or "E-Mail"
 
 ADMINS = [
     # "Webmaster <webmaster@example.com>"
