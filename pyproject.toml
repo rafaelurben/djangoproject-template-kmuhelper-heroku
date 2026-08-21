@@ -9,7 +9,7 @@ dependencies = [
     "django==6.1",
     "django-debug-toolbar==7.1.1",
     "django-kmuhelper==1.8.9",
-    "gunicorn==26.0.0",
+    "gunicorn==26.1.0",
     "mysqlclient==2.2.8",
     "psycopg[binary,pool]==3.3.4",
     "requests==2.34.2",
