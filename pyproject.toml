@@ -11,7 +11,7 @@ dependencies = [
     "django-kmuhelper==1.8.9",
     "gunicorn==26.2.0",
     "mysqlclient==2.2.8",
-    "psycopg[binary,pool]==3.3.4",
+    "psycopg[binary,pool]==3.3.5",
     "requests==2.34.2",
     "rich==15.0.0",
     "whitenoise==6.12.0",
