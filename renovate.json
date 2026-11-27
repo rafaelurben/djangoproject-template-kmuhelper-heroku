@@ -42,6 +42,8 @@
     }
   ],
   "labels": ["dependencies", "dependencies/renovate"],
-  "dependencyDashboardLabels": ["dependencies", "dependencies/renovate"],
-  "dependencyDashboardOSVVulnerabilitySummary": "all"
+  "dependencyDashboard": {
+    "labels": ["dependencies", "dependencies/renovate"],
+    "osvVulnerabilitySummary": "all"
+  }
 }
