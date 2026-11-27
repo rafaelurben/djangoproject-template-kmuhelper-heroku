@@ -32,7 +32,6 @@
       "groupSlug": "all-non-breaking",
       "matchJsonata": ["isBreaking = false"],
       "matchPackageNames": [
-        "*",
         "!python",
         "!django"
       ],
